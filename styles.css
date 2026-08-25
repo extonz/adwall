@@ -1,0 +1,77 @@
+:root {
+  color-scheme: dark;
+  --bg: #07090d;
+  --panel: #0d1118;
+  --panel-2: #111722;
+  --line: #202938;
+  --text: #f4f7fb;
+  --muted: #8c98aa;
+  --accent: #7cff8a;
+  --accent-2: #b8ffbf;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: radial-gradient(circle at top, #111827 0, var(--bg) 34rem);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.topbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 42px 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+}
+.eyebrow { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .18em; }
+h1 { margin: 7px 0 6px; font-size: clamp(32px, 5vw, 64px); line-height: .95; letter-spacing: -.05em; }
+.topbar p { margin: 0; color: var(--muted); }
+.stats { display: flex; gap: 10px; }
+.stats div { min-width: 88px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: #0b0f16cc; backdrop-filter: blur(10px); }
+.stats strong { display: block; font-size: 24px; }
+.stats span { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+
+main { max-width: 1400px; margin: 0 auto; padding: 0 24px 60px; }
+.ticker { display: flex; align-items: center; gap: 9px; margin-bottom: 18px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.ticker-muted { color: var(--muted); font-weight: 500; letter-spacing: 0; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+
+.ad-wall { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.ad-slot { position: relative; min-width: 0; display: flex; justify-content: center; align-items: center; overflow: hidden; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; min-height: 74px; }
+.ad-slot::before { content: attr(data-slot); position: absolute; top: 7px; left: 9px; z-index: 2; color: #5f6b7c; font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; pointer-events: none; }
+.ad-slot iframe, .ad-slot ins, .ad-slot > div, .ad-slot > script { max-width: 100%; }
+.ad-slot[data-size="728x90"] { grid-column: span 12; min-height: 112px; }
+.ad-slot[data-size="468x60"] { grid-column: span 8; min-height: 82px; }
+.ad-slot[data-size="300x250"] { grid-column: span 4; min-height: 274px; }
+.ad-slot[data-size="160x300"] { grid-column: span 3; min-height: 324px; }
+.ad-slot[data-size="160x600"] { grid-column: span 3; min-height: 624px; }
+.ad-slot[data-size="320x50"] { grid-column: span 4; min-height: 74px; }
+.ad-slot[data-size="native"] { grid-column: span 6; min-height: 150px; }
+
+.placeholder { width: 100%; min-height: 70px; display: grid; place-items: center; color: #465264; font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; }
+
+footer { max-width: 1400px; margin: 0 auto; padding: 22px 24px 40px; display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .topbar { align-items: start; flex-direction: column; }
+  .ad-wall { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .ad-slot[data-size="728x90"], .ad-slot[data-size="468x60"] { grid-column: span 6; }
+  .ad-slot[data-size="300x250"], .ad-slot[data-size="native"] { grid-column: span 3; }
+  .ad-slot[data-size="160x300"], .ad-slot[data-size="160x600"], .ad-slot[data-size="320x50"] { grid-column: span 2; }
+}
+
+@media (max-width: 560px) {
+  .topbar, main, footer { padding-left: 12px; padding-right: 12px; }
+  .ad-wall { display: flex; flex-direction: column; }
+  .ad-slot { width: 100%; min-height: 84px !important; }
+  .ad-slot[data-size="160x300"], .ad-slot[data-size="160x600"], .ad-slot[data-size="300x250"] { min-height: 274px !important; }
+  .stats { width: 100%; }
+  .stats div { flex: 1; }
+  .ticker-muted { display: none; }
+}
