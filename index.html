@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AdWall — a wall packed with advertising formats." />
+  <title>AdWall — 200 Ads</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <span class="eyebrow">ADWALL</span>
+      <h1>200 ads. One wall.</h1>
+      <p>Every slot is loaded on the initial page load.</p>
+    </div>
+    <div class="stats" aria-live="polite">
+      <div><strong id="slot-count">0</strong><span>slots</span></div>
+      <div><strong id="loaded-count">0</strong><span>loaded</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="ticker" aria-label="AdWall status">
+      <span class="dot"></span>
+      <span>LIVE AD WALL</span>
+      <span class="ticker-muted">200 advertising slots rendered immediately</span>
+    </section>
+
+    <section id="ad-wall" class="ad-wall" aria-label="Advertising wall"></section>
+  </main>
+
+  <footer>
+    <span>ADWALL</span>
+    <span>200 slots · immediate load</span>
+  </footer>
+
+  <script src="./ads.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
